@@ -1,9 +1,9 @@
 function DDA(x1, x2, y1, y2) {
 
-	console.log(x1, x2, y1, y2);
+    console.log(x1, x2, y1, y2);
 
-	var example = document.getElementById("example"),
-			    ctx     = example.getContext('2d');
+    var example = document.getElementById("example"),
+                ctx     = example.getContext('2d');
 
     example.width  = 640;
     example.height = 480;
@@ -19,7 +19,7 @@ function DDA(x1, x2, y1, y2) {
 //    console.log(len);
 
     if (len === 0) {
-    	ctx.fillRect(x1, y1, x1+1, y1+1);
+        ctx.fillRect(x1, y1, x1+1, y1+1);
     } else {
         var dX = (x2 - x1) / len;
         var dY = (y2 - y1) / len;
@@ -30,7 +30,7 @@ function DDA(x1, x2, y1, y2) {
         var x = x1;
         var y = y1;
 /*
-		console.log(x);
+        console.log(x);
         console.log(y);
 */        
         len++;
@@ -38,18 +38,18 @@ function DDA(x1, x2, y1, y2) {
 
 
         while(len--) {
-        	x += dX;
-        	y += dY;
+            x += dX;
+            y += dY;
 
-        	ctx.strokeRect(Math.round(x), Math.round(y), 1, 1);
+            ctx.strokeRect(Math.round(x), Math.round(y), 1, 1);
         }
     }
 
 }
 
 function BR_L(x1, x2, y1, y2) {
-	var example = document.getElementById("example"),
-			    ctx     = example.getContext('2d');
+    var example = document.getElementById("example"),
+                ctx     = example.getContext('2d');
 
     example.width  = 640;
     example.height = 480;
@@ -62,6 +62,14 @@ function BR_L(x1, x2, y1, y2) {
     var lenY = Math.abs(y2 - y1);
 
     var len = Math.max(lenY, lenX);
+
+    if (x1 > x2) {
+        [x1, x2] = [x2, x1];
+    }
+
+    if (y1 > y2) {    
+        [y1, y2] = [y2, y1];
+    }
 
     if (len === 0) {
         ctx.fillRect(x1, y1, 1, 1);
@@ -89,8 +97,8 @@ function BR_L(x1, x2, y1, y2) {
 }
 
 function WY(x1, x2, y1, y2) {
-	var example = document.getElementById("example"),
-			    ctx     = example.getContext('2d');
+    var example = document.getElementById("example"),
+                ctx     = example.getContext('2d');
 
     example.width  = 640;
     example.height = 480;
@@ -101,11 +109,11 @@ function WY(x1, x2, y1, y2) {
 
     var steep = Math.abs(y2 - y1) > Math.abs(x2 - x1);
 
-    if (steep) {
+    /*if (steep) {
         [x1, y1] = [y1, x1];
         [x2, y2] = [y2, x2];
     }
-    if (x1 > x2) {
+    */if (x1 > x2) {
         [x1, x2] = [x2, x1];
         [y1, y2] = [y2, y1];
     }
@@ -130,8 +138,8 @@ function WY(x1, x2, y1, y2) {
 }
 
 function BR_C(x, y, R) {
-	var example = document.getElementById("example1"),
-			    ctx     = example.getContext('2d');
+    var example = document.getElementById("example1"),
+                ctx     = example.getContext('2d');
 
     example.width  = 640;
     example.height = 480;
@@ -180,16 +188,16 @@ function BR_C(x, y, R) {
 var checkboxes = [document.getElementById("line_ch"), document.getElementById("circle_ch")];
 
 for (var i = 0; i < 2; i++) {
-	checkboxes[i].onclick = function() {
-		if (document.getElementById("line_ch").checked) {
-			document.getElementById("lines").style.display = "block";
-			document.getElementById("circle").style.display = "none";
-		} else 
-		if (document.getElementById("circle_ch").checked) {
-			document.getElementById("lines").style.display = "none";
-			document.getElementById("circle").style.display = "block";
-		}	
-	}
+    checkboxes[i].onclick = function() {
+        if (document.getElementById("line_ch").checked) {
+            document.getElementById("lines").style.display = "block";
+            document.getElementById("circle").style.display = "none";
+        } else 
+        if (document.getElementById("circle_ch").checked) {
+            document.getElementById("lines").style.display = "none";
+            document.getElementById("circle").style.display = "block";
+        }   
+    }
 }
 
 console.log("sfkljdsfkljdsf");
@@ -208,24 +216,24 @@ var y = document.getElementById("y");
 var r = document.getElementById("R");
 
 for (var i = buttons.length - 1; i >= 0; i--) {
-	console.log(i);
-	buttons[i].onclick = function() {
+    console.log(i);
+    buttons[i].onclick = function() {
 
-		switch(this.value) {
-			case "1":
-				DDA(+x1.value, +x2.value, +y1.value, +y2.value);
-				break;
-			case "2":
-				BR_L(+x1.value, +x2.value, +y1.value, +y2.value);
-				break;
-			case "3":
-				WY(+x1.value, +x2.value, +y1.value, +y2.value);
-				break;
-			case "4":
-				BR_C(+x.value, +y.value, +r.value);
-				break;
-		}
-	return false;
-	}
+        switch(this.value) {
+            case "1":
+                DDA(+x1.value, +x2.value, +y1.value, +y2.value);
+                break;
+            case "2":
+                BR_L(+x1.value, +x2.value, +y1.value, +y2.value);
+                break;
+            case "3":
+                WY(+x1.value, +x2.value, +y1.value, +y2.value);
+                break;
+            case "4":
+                BR_C(+x.value, +y.value, +r.value);
+                break;
+        }
+    return false;
+    }
 }
 

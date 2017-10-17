@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="lab1.css">
+	<title>Laba 1</title>
+</head>
+<body>
+	<form>
+		<input type="radio" name="fig" id="line_ch">
+		<label for="line_ch">Draw line</label>
+
+		<input type="radio" name="fig" id="circle_ch">
+		<label for="circle_ch">Draw circle</label>
+	</form>
+	
+	<form id="lines">
+		<p>		
+			<div>
+				<span>x1</span>
+				<input type="text" id="x1">
+			</div>
+			
+			<div>
+				<span>y1</span>
+				<input type="text" id="y1">	
+			</div>
+			
+		</p>
+		<p>
+			
+			<div>
+				<span>x2</span>
+				<input type="text" id="x2">	
+			</div>
+			
+			<div>
+				<span>y2</span>
+				<input type="text" id="y2">	
+			</div>
+		</p>
+		<p>
+			<button value="1">DDA algorithm</button>
+			<button value="2">Bresenham's algorithm</button>
+			<button value="3">Wu's algorithm</button>
+		</p>
+		<p>
+			<canvas id="example"></canvas>
+		</p>
+	</form>
+
+
+	<form id="circle">
+		<div>
+			<span>x</span>
+			<input type="text" id="x">	
+		</div>
+
+		<div>
+			<span>y</span>
+			<input type="text" id="y">
+		</div>
+
+		<div>
+		<span>R</span>
+			<input type="text" id="R">	
+		</div>
+			<button value="4">Bresenham's</button>
+		<p>
+			<canvas id="example1"></canvas>
+		</p>
+	</form>
+<script src="lab1.js"></script>
+</body>
+</html>
